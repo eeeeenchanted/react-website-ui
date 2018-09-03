@@ -1,0 +1,16 @@
+.upload-container {
+    padding-bottom: 200px;
+}
+
+.upload {
+    text-align: center;
+}
+
+.control-label {
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.uploadinput {
+    padding-bottom: 10px;
+}
