@@ -43,10 +43,12 @@ class ResourceForm extends Component {
 
     changeFiles = (e) => {
         const file = e.target.files[0];
+        console.log(e.target.files);
         if (!file) {
             return;
         }
         this.setState({file: file})
+        
     };
 
     handleChange = (e) => {
@@ -108,6 +110,7 @@ class ResourceForm extends Component {
                     fileDescription,
                     fileReadPrice,
                     fileRightPrice,
+                    file,
                 }).then(  //then接收两个函数参数，第一个是成功之后执行，第二个是错误之后执行
                     () => {
                         this.setState({done: true})
@@ -124,6 +127,7 @@ class ResourceForm extends Component {
                     fileDescription,
                     fileReadPrice,
                     fileRightPrice,
+                    file,
                 }).then(  //then接收两个函数参数，第一个是成功之后执行，第二个是错误之后执行
                     () => {
                         this.setState({done: true})
@@ -219,14 +223,27 @@ class ResourceForm extends Component {
     
                         <div className="form-group">
                             <label htmlFor="title" className="control-label">FileSelect</label>
+                            <br/>
+                                                    
+                            <span className="btn btn-primary fileinput-btn">
+                                选择文件
                             <input
                                 type="file"
                                 ref="file"
                                 name="file"
                                 required
                                 onChange={this.changeFiles}
+                                className="fileinput"
+                            /> 
+                            </span>
+                            <input
+                                type="text"
+                                name="fileName"
+                                value={this.state.file ? this.state.file.name : ""}
+                                onChange={this.handleChange}
                                 className="uploadinput"
                             />
+                            
                             <span>{this.state.errors.file}</span>
                         </div>
     

@@ -14,3 +14,21 @@
 .uploadinput {
     padding-bottom: 10px;
 }
+
+.fileinput-btn {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    /* margin-left: 20px; */
+    margin-bottom: 20px;
+}
+
+.fileinput {
+    position:absolute;
+    right: 0px;
+    top: 0px;
+    opacity: 0;
+    filter:alpha(opacity=0);
+    -moz-opacity:0;
+    -khtml-opacity: 0;
+}

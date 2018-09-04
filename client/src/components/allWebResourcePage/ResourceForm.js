@@ -181,16 +181,27 @@ class ResourceForm extends Component {
 
                     <div className="form-group">
                         <label htmlFor="title" className="control-label">FileSelect</label>
+                        <br/>                                                   
+                        <span className="btn btn-primary fileinput-btn">
+                                选择文件
+                            <input
+                                type="file"
+                                ref="file"
+                                name="file"
+                                required
+                                onChange={this.changeFiles}
+                                className="fileinput"
+                            /> 
+                        </span>
                         <input
-                            type="file"
-                            ref="file"
-                            name="file"
-                            required
-                            onChange={this.changeFiles}
-                            className="uploadinput"
-                        />
+                                type="text"
+                                name="fileName"
+                                value={this.state.file ? this.state.file.name : ""}
+                                onChange={this.handleChange}
+                                className="uploadinput"
+                        />                           
                         <span>{this.state.errors.file}</span>
-                    </div>
+                    </div>                    
 
                     <div className="form-group">
                         <button className="btn btn-outline-primary btn-lg btn-block">Upload</button>
