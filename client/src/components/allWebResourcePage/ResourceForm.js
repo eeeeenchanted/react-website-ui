@@ -96,7 +96,7 @@ class ResourceForm extends Component {
             <div className="container upload-container">
                 <form className={classnames('ui', 'form', {loading: this.state.loading})}
                       onSubmit={this.handleSubmit}>
-                    <h1 className="upload">Add New Resource</h1>
+                    <h1 className="upload">Add New Resource(All Web)</h1>
 
                     {!!this.state.errors.global &&
                     <div className="ui negative message">{this.state.errors.global}</div>}
@@ -113,7 +113,7 @@ class ResourceForm extends Component {
                         />
                         <span>{this.state.errors.resourceId}</span>
                     </div>
- 
+
                     <div className={classnames('form-group', {error: !!this.state.errors.headline})}>
                         <label htmlFor="title" className="control-label">headline</label>
                         <input
@@ -181,7 +181,7 @@ class ResourceForm extends Component {
 
                     <div className="form-group">
                         <label htmlFor="title" className="control-label">FileSelect</label>
-                        <br/>                                                   
+                        <br/>
                         <span className="btn btn-primary fileinput-btn">
                                 选择文件
                             <input
@@ -191,17 +191,17 @@ class ResourceForm extends Component {
                                 required
                                 onChange={this.changeFiles}
                                 className="fileinput"
-                            /> 
+                            />
                         </span>
                         <input
-                                type="text"
-                                name="fileName"
-                                value={this.state.file ? this.state.file.name : ""}
-                                onChange={this.handleChange}
-                                className="uploadinput"
-                        />                           
+                            type="text"
+                            name="fileName"
+                            value={this.state.file ? this.state.file.name : ""}
+                            onChange={this.handleChange}
+                            className="uploadinput"
+                        />
                         <span>{this.state.errors.file}</span>
-                    </div>                    
+                    </div>
 
                     <div className="form-group">
                         <button className="btn btn-outline-primary btn-lg btn-block">Upload</button>

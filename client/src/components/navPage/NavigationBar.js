@@ -19,32 +19,33 @@ class NavigationBar extends Component {
     render() {
         const {isAuthenticated, user} = this.props.userLogin;
         console.log(user);
+        console.log(user.id);
 
         const userLinks = (
             <div className="container">
-               
-                    <Link className="navbar-brand" to="/">A站</Link>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
+
+                <Link className="navbar-brand" to="/">A站</Link>
+                <button className="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
 
 
-                    
                 <ul className="navbar-nav mr-auto">
-                
+
                     <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                        UpLoad
-                    </a>
-                         <ul className="dropdown-menu">
+                        <a className="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            UpLoad
+                        </a>
+                        <ul className="dropdown-menu">
                             <li>
-                                <Link className="nav-link dropdown-item" to="/allWebResources/upload">AllNetUpLoad</Link>
+                                <Link className="nav-link dropdown-item"
+                                      to="/allWebResources/upload">AllNetUpLoad</Link>
                             </li>
                             <li className="divider"></li>
                             <li>
-                              <Link className="nav-link dropdown-item" to="/resources/upload">UpLoad</Link>
+                                <Link className="nav-link dropdown-item" to="/resources/upload">UpLoad</Link>
                             </li>
                             {/* <a class="dropdown-item" href="#">Link 1</a>
                             <a class="dropdown-item" href="#">Link 2</a>
@@ -55,20 +56,20 @@ class NavigationBar extends Component {
                         <Link className="nav-link" to="/allWebResources/upload">AllNetUpLoad</Link>
                     </li>
                     <li className="nav-item">
-                       
+
                     </li> */}
                     <li className="nav-item">
-                        <Link className="nav-link" to="/">MyWallet</Link>
+                        <Link className="nav-link" to="/myWallet">MyWallet</Link>
                     </li>
-                   
+
                 </ul>
                 <ul className="navbar-nav mt-md-0">
                     <li className="nav-item">
-                        <a className="nav-link">Welcome {user.username}</a> 
+                        <a className="nav-link">Welcome {user.username}</a>
                     </li>
-                        <li className="nav-item">
+                    <li className="nav-item">
                         <Link className="nav-link" to="" onClick={this.logoutRequest}>Logout</Link>
-                    
+
                     </li>
                 </ul>
             </div>
@@ -77,28 +78,29 @@ class NavigationBar extends Component {
 
         const guestLinks = (
             <div className="container">
-               
-
-                    <Link className="navbar-brand" to="/">A站</Link>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
 
 
-               <ul className="navbar-nav mr-auto">
-                 <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                        UpLoad
-                    </a>
-                         <ul className="dropdown-menu">
+                <Link className="navbar-brand" to="/">A站</Link>
+                <button className="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+
+
+                <ul className="navbar-nav mr-auto">
+                    <li className="nav-item dropdown">
+                        <a className="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            UpLoad
+                        </a>
+                        <ul className="dropdown-menu">
                             <li>
-                                <Link className="nav-link dropdown-item" to="/allWebResources/upload">AllNetUpLoad</Link>
+                                <Link className="nav-link dropdown-item"
+                                      to="/allWebResources/upload">AllNetUpLoad</Link>
                             </li>
                             <li className="divider"></li>
                             <li>
-                              <Link className="nav-link dropdown-item" to="/resources/upload">UpLoad</Link>
+                                <Link className="nav-link dropdown-item" to="/resources/upload">UpLoad</Link>
                             </li>
                             {/* <a class="dropdown-item" href="#">Link 1</a>
                             <a class="dropdown-item" href="#">Link 2</a>
@@ -114,7 +116,7 @@ class NavigationBar extends Component {
                     <li className="nav-item">
                         <Link className="nav-link" to="/">MyWallet</Link>
                     </li>
-                </ul> 
+                </ul>
                 <ul className="navbar-nav mt-md-0">
                     <li className="nav-item">
                         <Link className="nav-link" to="/login">Login</Link>
@@ -123,7 +125,7 @@ class NavigationBar extends Component {
                         <Link className="nav-link" to="/signup">Sign Up</Link>
                     </li>
                 </ul>
-                
+
             </div>
         );
 
@@ -132,7 +134,6 @@ class NavigationBar extends Component {
                 {/* <div className="container"> */}
                 {/* <ul className="nav">
                      <li>
-
                     <Link className="navbar-brand" to="/">Education Website</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false"
@@ -142,9 +143,9 @@ class NavigationBar extends Component {
                     </li>
                     </ul> */}
 
-                    {/* <div className="collapse navbar-collapse" id="navbarsExample05"> */}
-                        {isAuthenticated ? userLinks : guestLinks}
-                    {/* </div> */}
+                {/* <div className="collapse navbar-collapse" id="navbarsExample05"> */}
+                {isAuthenticated ? userLinks : guestLinks}
+                {/* </div> */}
                 {/* </div> */}
             </nav>
         );

@@ -7,8 +7,7 @@ const ResourceCard = ({resource}) => {
     return (
         //  <Link className="resource-card" to={`locationResource/${resource.id}`}>
         <Link className="ui card resource-card" to={`locationResource/${resource.id}`}>
-        
-            
+
             <div className="ui image">
                 <img src={resource.fileImage} alt="resource Cover" x="0" y="0" width="100%" height="100%"/>
             </div>
@@ -24,10 +23,10 @@ const ResourceCard = ({resource}) => {
                 </span>
                 <br/>
                 <span className="price">所有价：{resource.fileRightPrice}$</span>
-                
+
             </div>
-           
-         </Link>
+
+        </Link>
     )
 };
 

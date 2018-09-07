@@ -6,7 +6,6 @@ import {fetchResources, deleteResource} from '../../actions/myResourceActions';
 
 class ResourcePage extends Component {
     componentDidMount() {
-        // this.props.fetchResources();
         const {user} = this.props.userLogin;
         this.props.fetchResources(user.id);
     }
@@ -15,7 +14,7 @@ class ResourcePage extends Component {
         return (
             <div>
                 <div className="container mb-3">
-                    <h1>Resource</h1>
+                    <h1>My Resource</h1>
                     <ResourceList resources={this.props.resources} deleteResource={this.props.deleteResource}/>
                 </div>
             </div>

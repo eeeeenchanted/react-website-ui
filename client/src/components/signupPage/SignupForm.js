@@ -133,6 +133,10 @@ class SignupForm extends Component {
                         Sign up
                     </button>
                 </div>
+
+                <div>
+                    <a href="http://localhost:3001/login">已有账号</a>
+                </div>
             </form>
         )
     }

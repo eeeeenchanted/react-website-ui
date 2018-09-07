@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchAllWebResource} from '../../actions/allResourceActions';
 import {Redirect} from "react-router-dom";
-import imgSrc from '../../images/city-streets.jpeg';
+import imgSrc from '../../images/react.png';
 
 class ResourceTxPage extends Component {
     state = {
@@ -63,7 +63,7 @@ class ResourceTxPage extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-    };  
+    };
 
     render() {
         const form = (
@@ -79,30 +79,34 @@ class ResourceTxPage extends Component {
                         </div>
                         <br/>
                         <div className="content">
-                        <br/>   <br/>
-                        <div className="body-content">       
-                            <div className="description">
-                                <h3>Description:</h3>
-                            </div>
-                            <br/>  <br/>
-                            <div className="extra">
+                            <br/> <br/>
+                            <div className="body-content">
+                                <div className="description">
+                                    <h3>Description:This is the fileDescription</h3>
+                                </div>
+                                <br/> <br/>
+                                <div className="extra">
                                 <span className="pricetag">
                                     ReadPrice：{this.state.readPrice}
-                                    <button onSubmit={this.handleSubmit} className="ui teal right floated basic button buy-button"><i className="shop icon"></i>Buy</button>
+                                    <button onSubmit={this.handleSubmit}
+                                            className="ui teal right floated basic button buy-button"><i
+                                        className="shop icon"></i>Buy</button>
                                 </span>
-                                <br/><br/>
-                                <span className="pricetag">
+                                    <br/><br/>
+                                    <span className="pricetag">
                                     RightPrice：{this.state.ownershipPrice}
-                                    <button onSubmit={this.handleSubmit} className="ui teal right floated basic button buy-button"><i className="shop icon"></i>Buy</button>
+                                        <button onSubmit={this.handleSubmit}
+                                                className="ui teal right floated basic button buy-button"><i
+                                            className="shop icon"></i>Buy</button>
                                 </span>
+                                </div>
                             </div>
-                         </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
-        ); 
+        );
 
         return (
             <div>

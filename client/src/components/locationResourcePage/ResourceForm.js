@@ -78,31 +78,34 @@ class ResourceForm extends Component {
                         </div>
                         <br/>
                         <div className="content">
-                        <br/>   <br/>
-                        <div className="body-content">       
-                            <div className="description">
-                                <h3>Description:{this.state.fileDescription}</h3>
-                            </div>
-                            <br/>  <br/>
-                            <div className="extra">
+                            <br/> <br/>
+                            <div className="body-content">
+                                <div className="description">
+                                    <h3>Description:{this.state.fileDescription}</h3>
+                                </div>
+                                <br/> <br/>
+                                <div className="extra">
                                 <span className="pricetag">
                                     ReadPrice：{this.state.fileReadPrice}
-                                    <button onSubmit={this.handleSubmit} className="ui teal right floated basic button buy-button"><i className="shop icon"></i>Buy</button>
+                                    <button onSubmit={this.handleSubmit}
+                                            className="ui teal right floated basic button buy-button"><i
+                                        className="shop icon"></i>Buy</button>
                                 </span>
-                                <br/><br/>
-                                <span className="pricetag">
+                                    <br/><br/>
+                                    <span className="pricetag">
                                     RightPrice：{this.state.fileRightPrice}
-                                    <button onSubmit={this.handleSubmit} className="ui teal right floated basic button buy-button"><i className="shop icon"></i>Buy</button>
+                                        <button onSubmit={this.handleSubmit}
+                                                className="ui teal right floated basic button buy-button"><i
+                                            className="shop icon"></i>Buy</button>
                                 </span>
+                                </div>
                             </div>
-                         </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
         );
-
 
         return (
             <div>

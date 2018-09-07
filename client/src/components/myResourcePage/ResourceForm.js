@@ -22,6 +22,7 @@ class ResourceForm extends Component {
 
     componentDidMount() {
         const {match} = this.props;
+        console.log('userId', this.state.userId);
         if (match.params.id) {  //所有路由的id参数
             console.log("id", match.params.id);
             this.props.fetchResource(match.params.id);
@@ -43,12 +44,10 @@ class ResourceForm extends Component {
 
     changeFiles = (e) => {
         const file = e.target.files[0];
-        console.log(e.target.files);
         if (!file) {
             return;
         }
         this.setState({file: file})
-        
     };
 
     handleChange = (e) => {
@@ -79,7 +78,6 @@ class ResourceForm extends Component {
         const isValid = Object.keys(errors).length === 0;  //Object.keys返回对象所有属性
 
         if (isValid) {
-            // const {id, fileTitle, fileImage, fileDescription, fileReadPrice, fileRightPrice, file} = this.state;
             const {id, userId, fileTitle, fileImage, fileDescription, fileReadPrice, fileRightPrice, file} = this.state;
             console.log(this.state);
             console.log(file);
@@ -110,7 +108,6 @@ class ResourceForm extends Component {
                     fileDescription,
                     fileReadPrice,
                     fileRightPrice,
-                    file,
                 }).then(  //then接收两个函数参数，第一个是成功之后执行，第二个是错误之后执行
                     () => {
                         this.setState({done: true})
@@ -127,7 +124,6 @@ class ResourceForm extends Component {
                     fileDescription,
                     fileReadPrice,
                     fileRightPrice,
-                    file,
                 }).then(  //then接收两个函数参数，第一个是成功之后执行，第二个是错误之后执行
                     () => {
                         this.setState({done: true})
@@ -142,90 +138,90 @@ class ResourceForm extends Component {
 
     render() {
         const form = (
-           
-                <div className="container upload-container">
-                    <form className={classnames('ui', 'form', {loading: this.state.loading})}
-                          onSubmit={this.handleSubmit}>
-                        <h1 className="upload">Add New Resource</h1>
-    
-                        {!!this.state.errors.global &&
-                        <div className="ui negative message">{this.state.errors.global}</div>}
-    
-                        <div className={classnames('form-group', {error: !!this.state.errors.fileTitle})}>
-                            <label htmlFor="title" className="control-label">Title</label>
-                            <input
-                                type="text"
-                                name="fileTitle"
-                                value={this.state.fileTitle}
-                                onChange={this.handleChange}
-                                className="uploadinput"
-                                placeholder="Enter title"
-                            />
-                            <span>{this.state.errors.fileTitle}</span>
-                        </div>
-    
-                        <div className={classnames('form-group', {error: !!this.state.errors.fileImage})}>
-                            <label htmlFor="title" className="control-label">Cover url</label>
-                            <input
-                                type="text"
-                                name="fileImage"
-                                value={this.state.fileImage}
-                                onChange={this.handleChange}
-                                className="uploadinput"
-                                placeholder="Enter url"
-                            />
-                            <span>{this.state.errors.fileImage}</span>
-                        </div>
-    
-                        <div className="form-group">
-                            {this.state.fileImage !== '' &&
-                            <img src={this.state.fileImage} alt="fileImage" className="ui small bordered image"/>}
-                        </div>
-    
-                        <div className={classnames('form-group', {error: !!this.state.errors.fileDescription})}>
-                            <label htmlFor="title" className="control-label">Description</label>
-                            <textarea
-                                className="form-control uploadinput"
-                                rows="5"
-                                name="fileDescription"
-                                value={this.state.fileDescription}
-                                onChange={this.handleChange}
-                                placeholder="No more than 100 words"
-                            />
-                            <span>{this.state.errors.fileDescription}</span>
-                        </div>
-    
-                        <div className={classnames('form-group', {error: !!this.state.errors.fileReadPrice})}>
-                            <label htmlFor="title" className="control-label">ReadPrice</label>
-                            <input
-                                type="text"
-                                name="fileReadPrice"
-                                value={this.state.fileReadPrice}
-                                onChange={this.handleChange}
-                                className="uploadinput"
-                                placeholder="Enter read-price"
-                            />
-                            <span>{this.state.errors.fileReadPrice}</span>
-                        </div>
-    
-                        <div className={classnames('form-group', {error: !!this.state.errors.fileRightPrice})}>
-                            <label htmlFor="title" className="control-label">RightPrice</label>
-                            <input
-                                type="text"
-                                name="fileRightPrice"
-                                value={this.state.fileRightPrice}
-                                onChange={this.handleChange}
-                                className="uploadinput"
-                                placeholder="Enter right-price"
-                            />
-                            <span>{this.state.errors.fileRightPrice}</span>
-                        </div>
-    
-                        <div className="form-group">
-                            <label htmlFor="title" className="control-label">FileSelect</label>
-                            <br/>
-                                                    
-                            <span className="btn btn-primary fileinput-btn">
+
+            <div className=" upload-container">
+                <form className={classnames('ui', 'form', {loading: this.state.loading})}
+                      onSubmit={this.handleSubmit}>
+                    <h1 className="upload">Add New Resource(Location)</h1>
+
+                    {!!this.state.errors.global &&
+                    <div className="ui negative message">{this.state.errors.global}</div>}
+
+                    <div className={classnames('form-group', {error: !!this.state.errors.fileTitle})}>
+                        <label htmlFor="title" className="control-label">Title</label>
+                        <input
+                            type="text"
+                            name="fileTitle"
+                            value={this.state.fileTitle}
+                            onChange={this.handleChange}
+                            className="uploadinput"
+                            placeholder="Enter title"
+                        />
+                        <span>{this.state.errors.fileTitle}</span>
+                    </div>
+
+                    <div className={classnames('form-group', {error: !!this.state.errors.fileImage})}>
+                        <label htmlFor="title" className="control-label">Cover url</label>
+                        <input
+                            type="text"
+                            name="fileImage"
+                            value={this.state.fileImage}
+                            onChange={this.handleChange}
+                            className="uploadinput"
+                            placeholder="Enter url"
+                        />
+                        <span>{this.state.errors.fileImage}</span>
+                    </div>
+
+                    <div className="form-group">
+                        {this.state.fileImage !== '' &&
+                        <img src={this.state.fileImage} alt="fileImage" className="ui small bordered image"/>}
+                    </div>
+
+                    <div className={classnames('form-group', {error: !!this.state.errors.fileDescription})}>
+                        <label htmlFor="title" className="control-label">Description</label>
+                        <textarea
+                            className="form-control uploadinput"
+                            rows="5"
+                            name="fileDescription"
+                            value={this.state.fileDescription}
+                            onChange={this.handleChange}
+                            placeholder="No more than 100 words"
+                        />
+                        <span>{this.state.errors.fileDescription}</span>
+                    </div>
+
+                    <div className={classnames('form-group', {error: !!this.state.errors.fileReadPrice})}>
+                        <label htmlFor="title" className="control-label">ReadPrice</label>
+                        <input
+                            type="text"
+                            name="fileReadPrice"
+                            value={this.state.fileReadPrice}
+                            onChange={this.handleChange}
+                            className="uploadinput"
+                            placeholder="Enter read-price"
+                        />
+                        <span>{this.state.errors.fileReadPrice}</span>
+                    </div>
+
+                    <div className={classnames('form-group', {error: !!this.state.errors.fileRightPrice})}>
+                        <label htmlFor="title" className="control-label">RightPrice</label>
+                        <input
+                            type="text"
+                            name="fileRightPrice"
+                            value={this.state.fileRightPrice}
+                            onChange={this.handleChange}
+                            className="uploadinput"
+                            placeholder="Enter right-price"
+                        />
+                        <span>{this.state.errors.fileRightPrice}</span>
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="title" className="control-label">FileSelect</label>
+                        <br/>
+
+                        <span className="btn btn-primary fileinput-btn">
                                 选择文件
                             <input
                                 type="file"
@@ -234,24 +230,25 @@ class ResourceForm extends Component {
                                 required
                                 onChange={this.changeFiles}
                                 className="fileinput"
-                            /> 
-                            </span>
-                            <input
-                                type="text"
-                                name="fileName"
-                                value={this.state.file ? this.state.file.name : ""}
-                                onChange={this.handleChange}
-                                className="uploadinput"
                             />
-                            
-                            <span>{this.state.errors.file}</span>
-                        </div>
-    
-                        <div className="form-group">
-                            <button className="btn btn-outline-primary btn-lg btn-block">Upload</button>
-                        </div>
-                    </form>
-                </div>
+                            </span>
+                        <input
+                            type="text"
+                            name="fileName"
+                            value={this.state.file ? this.state.file.name : ""}
+                            onChange={this.handleChange}
+                            className="uploadinput"
+                        />
+
+                        <span>{this.state.errors.file}</span>
+                    </div>
+
+                    <div className="form-group">
+                        <button className="btn btn-outline-primary btn-lg btn-block">Upload</button>
+                    </div>
+                </form>
+            </div>
+
         );
 
         return (
@@ -266,7 +263,6 @@ const mapStateToProps = (state, props) => {
     const {match} = props;
     if (match.params.id) {
         return {
-            // resource: state.resources.find(item => item.id.toString() === match.params.id.toString()) //这里有问题,返回值是undefined
             userLogin: state.userLogin,
             resource: state.resources.find(item => item.id.toString() === match.params.id.toString())
         };

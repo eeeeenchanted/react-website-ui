@@ -4,13 +4,10 @@ import {Link} from 'react-router-dom';
 
 const ResourceCard = ({resource, deleteResource}) => {
     console.log(resource);
-
     return (
         <div className="ui card">
             <div className="ui image">
-            
-                <img src={resource.fileImage} alt="resource Cover" x="0" y="0" width="100%" height="100%"/>
-            
+                <img src={resource.fileImage} alt="resource fileImage" x="0" y="0" width="100%" height="100%"/>
             </div>
             <div className="content">
                 <Link className="header" to={`/resource/${resource.id}`}>{resource.fileTitle}</Link>
