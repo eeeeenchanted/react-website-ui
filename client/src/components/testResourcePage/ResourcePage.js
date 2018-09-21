@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import ResourceList from './ResourceList';
-import {fetchResources, deleteResource} from '../../actions/myResourceActions';
-import {deleteWebResource} from '../../actions/allResourceActions'
+import {fetchResources} from '../../actions/testResourceAction';
 import {NavLink} from "react-router-dom";
 
 class ResourcePage extends Component {
@@ -17,14 +16,13 @@ class ResourcePage extends Component {
             <div>
                 <div className="ui secondary menu">
                     <NavLink exact activeClassName="active" to="/resources"
-                                 className="link active item">所有权下的资源</NavLink>
+                                 className="link item">所有权下的资源</NavLink>
                     <NavLink exact activeClassName="active" to="/testResources"
-                                 className="link item">阅读权下的资源</NavLink>
+                                 className="link active item">阅读权下的资源</NavLink>
                 </div>
                 <div className="container mb-3">
-                   
-                    <ResourceList resources={this.props.resources} deleteResource={this.props.deleteResource}
-                                  deleteWebResource={this.props.deleteWebResource}/>
+                    
+                    <ResourceList testResources={this.props.testResources} />
                 </div>
             </div>
         );
@@ -32,17 +30,15 @@ class ResourcePage extends Component {
 }
 
 ResourcePage.propTypes = {
-    resources: PropTypes.array.isRequired,
-    fetchResources: PropTypes.func.isRequired,
-    deleteResource: PropTypes.func.isRequired,
-    deleteWebResource: PropTypes.func.isRequired
+    testResources: PropTypes.array.isRequired,
+    fetchResources: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
     return {
         userLogin: state.userLogin,
-        resources: state.resources
+        testResources: state.testResources
     };
 };
 
-export default connect(mapStateToProps, {fetchResources, deleteResource, deleteWebResource})(ResourcePage);
+export default connect(mapStateToProps, {fetchResources})(ResourcePage);

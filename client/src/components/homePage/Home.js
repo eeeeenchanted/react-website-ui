@@ -36,6 +36,13 @@ class Home extends Component {
                         have source code available and confirm the attacks (which
                         target only our accounts) in the main Ethereum network
                     </p>
+                    <div className="ui horizontal divider">Other Websites </div>
+                    <div className="ui three item secondary menu">                    
+                        <a className="item">B站</a>
+                        <a className="item">C站</a>
+                        <a className="item">D站</a>
+                    </div>
+                    <br/><br/><br/><br/>
                 </div>
             </div>
         );

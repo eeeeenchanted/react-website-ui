@@ -15,7 +15,7 @@ class SignupForm extends Component {
             passwordConfirm: '',
             errors: {},
             isLoading: false,
-            invalid:false
+            invalid: false
         }
     }
 
@@ -30,12 +30,13 @@ class SignupForm extends Component {
         console.log(this.state);
         this.setState({errors: {}, isLoading: true});
         //axios.post('/api/users',{user:this.state});
+        //将用户信息注册在本站数据库中
         this.props.userSignupRequest(this.state).then(
             () => {
                 console.log(this.props);
                 this.props.addFlashMessage({
-                    type:"success",
-                    text:"You signed up successfully welcome"
+                    type: "success",
+                    text: "You signed up successfully welcome"
                 });
                 this.props.history.push('/login');
             },
@@ -45,21 +46,21 @@ class SignupForm extends Component {
         );
     };
 
-    checkUserExists =(e) => {
+    checkUserExists = (e) => {
         const field = e.target.name;
         const val = e.target.value;
-        if(val !== ''){
+        if (val !== '') {
             this.props.isUserExists(val).then(res => {
                 let errors = this.state.errors;
                 let invalid;
-                if(res.data.user){
+                if (res.data.user) {
                     errors[field] = "There is user with such " + field;
                     invalid = true;
                 } else {
                     errors[field] = '';
                     invalid = false;
                 }
-                this.setState({ errors, invalid });
+                this.setState({errors, invalid});
             })
         }
     };
@@ -129,7 +130,8 @@ class SignupForm extends Component {
                 </div>
 
                 <div className="form-group">
-                    <button disabled={this.state.isLoading || this.state.invalid} className="btn btn-outline-primary btn-lg btn-block btnsignup">
+                    <button disabled={this.state.isLoading || this.state.invalid}
+                            className="btn btn-outline-primary btn-lg btn-block btnsignup">
                         Sign up
                     </button>
                 </div>
@@ -144,8 +146,9 @@ class SignupForm extends Component {
 
 SignupForm.propTypes = {
     userSignupRequest: PropTypes.func.isRequired,
-    addFlashMessage:PropTypes.func.isRequired,
-    isUserExists:PropTypes.func.isRequired
+    userSignupBlockchain: PropTypes.func.isRequired,
+    addFlashMessage: PropTypes.func.isRequired,
+    isUserExists: PropTypes.func.isRequired
 };
 
 

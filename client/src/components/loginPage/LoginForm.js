@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import validateInput from '../../utils/validations/validateLogin';
 import {connect} from 'react-redux';
 import {loginRequest} from '../../actions/loginActions';
+import {userSignupBlockchain} from '../../actions/SignupActions';
 import PropTypes from 'prop-types';
 import './LoginForm.css';
 
@@ -10,11 +11,25 @@ class LoginForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            $class: "org.demo.network.Customer",
+            website: 'A',  //获取网站名(未解决，如何获取站名)
+            token: 0,
             identifier: '',
             password: '',
             errors: {},
             isLoading: false
         }
+    }
+
+    componentDidMount() {
+        const {$class, website, token} = this.state;
+        const userName = this.props.Customer.username;
+        const userId = website + '-' + userName;
+        console.log(userId, $class, website, token);
+        console.log(this.props);
+        this.props.userSignupBlockchain({
+            $class, website, token, userId
+        })
     }
 
     static propTypes = {
@@ -107,4 +122,10 @@ class LoginForm extends Component {
     }
 }
 
-export default connect(null, {loginRequest})(LoginForm);
+const mapStateToProps = (state) => {
+    return {
+        Customer: state.Customer,
+    };
+};
+
+export default connect(mapStateToProps, {loginRequest, userSignupBlockchain})(LoginForm);
